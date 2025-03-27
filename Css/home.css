@@ -1,0 +1,134 @@
+body {
+  font-family: Arial, sans-serif;
+  background: black;
+  text-align: center;
+  margin: 20px;
+  color: white;
+}
+
+.container {
+  max-width: 400px;
+  background: rgb(45, 45, 45);
+  padding: 20px;
+  margin: auto;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  margin-bottom: 10px;
+}
+
+.balance-container button {
+  background: green;
+  width: 50%;
+}
+
+#balance {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.stats p {
+  font-size: 1.2rem;
+}
+
+form {
+  margin: 20px 0;
+}
+
+input {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#updateIncome {
+  width: 95%;
+  padding: 10px;
+  background: green;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+#updateIncome:hover {
+  background: darkgreen;
+}
+
+#debit-btn {
+  width: 20%;
+  padding: 10px;
+  background: green;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+#credit-btn{
+  width: 20%;
+  padding: 10px;
+  background: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+#debit-btn:hover {
+  background: darkgreen;
+}
+
+#credit-btn:hover {
+  background: rgb(197, 0, 0);
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background: #fff;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.income {
+  border-left: 5px solid green;
+}
+
+.expense {
+  border-left: 5px solid red;
+}
+
+.delete-btn {
+  background: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+.delete-btn:hover {
+  background: darkred;
+}
