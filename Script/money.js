@@ -22,9 +22,8 @@ export class Money {
       .filter((t) => t.type === "credit")
       .reduce((acc, t) => acc + t.amount, 0);
 
-    return this.income + totalCredits - totalExpenses; // Corrected balance formula
+    return this.income + totalCredits - totalExpenses;
   }
-
   getTransactions() {
     return this.transactions;
   }

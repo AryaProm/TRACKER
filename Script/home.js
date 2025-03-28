@@ -11,12 +11,10 @@ const creditBtn = document.getElementById("credit-btn");
 const incomeReceivedBtn = document.getElementById("incomeRecieved");
 
 const M = new Money();
-const utils = new Utils(M); // Pass Money instance to Utils
+const utils = new Utils(M); 
 
-// Ensure UI updates with the correct Money instance
 utils.updateUI();
 
-// Update Income event
 updateIncomeBtn.addEventListener("click", () => {
   const newIncome = parseFloat(incomeInput.value);
   if (!isNaN(newIncome) && newIncome >= 0) {
@@ -27,19 +25,17 @@ updateIncomeBtn.addEventListener("click", () => {
   }
 });
 
-// "Income Received" button event
 incomeReceivedBtn.addEventListener("click", () => {
   let newIncome = parseFloat(incomeInput.value);
   if (isNaN(newIncome) || newIncome <= 0) {
-    newIncome = M.getIncome(); // Use previous income if input is empty
+    newIncome = M.getIncome(); 
   } else {
-    newIncome += M.getIncome(); // Add input value to previous income
+    newIncome += M.getIncome(); 
   }
   M.setIncome(newIncome);
   utils.updateUI();
 });
 
-// Debit transaction event
 debitBtn.addEventListener("click", () => {
   const description = descriptionInput.value.trim();
   const amount = parseFloat(amountInput.value);
@@ -56,7 +52,7 @@ debitBtn.addEventListener("click", () => {
   amountInput.value = "";
 });
 
-// Credit transaction event
+
 creditBtn.addEventListener("click", () => {
   const description = descriptionInput.value.trim();
   const amount = parseFloat(amountInput.value);

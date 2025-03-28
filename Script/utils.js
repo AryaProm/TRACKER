@@ -1,8 +1,6 @@
-import { Money } from "../Script/money.js";
-
 export class Utils {
   constructor(M) {
-    this.M = M; // Use the same Money instance from home.js
+    this.M = M; 
 
     this.incomeDisplay = document.getElementById("income");
     this.balanceDisplay = document.getElementById("balance");
@@ -17,9 +15,9 @@ export class Utils {
     this.incomeDisplay.innerHTML = `$${this.M.getIncome()}`;
     this.balanceDisplay.innerHTML = `$${this.M.getBalance()}`;
 
-    // Corrected: Calculate total expenses (debits)
+    
     const totalExpenses = this.M.getTransactions()
-      .filter((t) => t.type === "debit") // Changed from 'credit' to 'debit'
+      .filter((t) => t.type === "debit") 
       .reduce((acc, t) => acc + t.amount, 0);
 
     this.expensesDisplay.innerHTML = `$${totalExpenses}`;
@@ -47,7 +45,7 @@ export class Utils {
       btn.style.padding = "5px 10px";
       btn.style.cursor = "pointer";
 
-      // Remove transaction when clicking the button
+     
       btn.addEventListener("click", () => {
         this.M.removeTransaction(index);
         this.updateUI();
