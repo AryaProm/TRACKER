@@ -14,7 +14,15 @@ export class Money {
   }
 
   getBalance() {
-    return this.income - this.transactions.reduce((acc, t) => acc + t.amount, 0);
+    const totalExpenses = this.transactions
+      .filter((t) => t.type === "debit")
+      .reduce((acc, t) => acc + t.amount, 0);
+
+    const totalCredits = this.transactions
+      .filter((t) => t.type === "credit")
+      .reduce((acc, t) => acc + t.amount, 0);
+
+    return this.income + totalCredits - totalExpenses; // Corrected balance formula
   }
 
   getTransactions() {
@@ -27,7 +35,7 @@ export class Money {
   }
 
   removeTransaction(index) {
-    this.transactions.splice(index, 1); // Remove transaction
-    localStorage.setItem("transactions", JSON.stringify(this.transactions)); // Update storage
+    this.transactions.splice(index, 1);
+    localStorage.setItem("transactions", JSON.stringify(this.transactions));
   }
 }

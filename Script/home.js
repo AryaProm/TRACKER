@@ -1,5 +1,5 @@
 import { Money } from "../Script/money.js";
-import {Utils} from '../Script/utils.js'
+import { Utils } from "../Script/utils.js";
 
 const descriptionInput = document.getElementById("description");
 const amountInput = document.getElementById("amount");
@@ -9,8 +9,12 @@ const updateIncomeBtn = document.getElementById("updateIncome");
 const debitBtn = document.getElementById("debit-btn");
 const creditBtn = document.getElementById("credit-btn");
 const incomeReceivedBtn = document.getElementById("incomeRecieved");
-const utils = new Utils()
+
 const M = new Money();
+const utils = new Utils(M); // Pass Money instance to Utils
+
+// Ensure UI updates with the correct Money instance
+utils.updateUI();
 
 // Update Income event
 updateIncomeBtn.addEventListener("click", () => {
@@ -27,15 +31,13 @@ updateIncomeBtn.addEventListener("click", () => {
 incomeReceivedBtn.addEventListener("click", () => {
   let newIncome = parseFloat(incomeInput.value);
   if (isNaN(newIncome) || newIncome <= 0) {
-    newIncome = M.getIncome(); // If input is empty, use previous income
+    newIncome = M.getIncome(); // Use previous income if input is empty
   } else {
     newIncome += M.getIncome(); // Add input value to previous income
   }
   M.setIncome(newIncome);
   utils.updateUI();
 });
-
-utils.updateUI();
 
 // Debit transaction event
 debitBtn.addEventListener("click", () => {
@@ -70,5 +72,3 @@ creditBtn.addEventListener("click", () => {
   descriptionInput.value = "";
   amountInput.value = "";
 });
-
-

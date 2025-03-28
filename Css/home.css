@@ -8,6 +8,9 @@ body {
   overflow: hidden;
   position: relative;
 }
+h2, h3  {
+  text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 15px #00ff00;
+}
 
 
 
@@ -58,52 +61,35 @@ input {
   border-radius: 5px;
 }
 
-/* #updateIncome {
-  width: 95%;
-  padding: 10px;
-  background: green;
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 1rem;
-}
-
-#updateIncome:hover {
-  background: darkgreen;
-} */
-
-#debit-btn,
-#updateIncome,
 #incomeRecieved {
   width: 20%;
   padding: 10px;
-  background: green;
   color: white;
   border: none;
   cursor: pointer;
   border-radius: 5px;
   font-size: 1rem;
 }
-
+#debit-btn,
+#updateIncome,
 #credit-btn {
   width: 20%;
   padding: 10px;
-  background: red;
+  background: green;
+
   color: white;
   border: none;
   cursor: pointer;
   border-radius: 5px;
   font-size: 1rem;
 }
-
-#debit-btn:hover,#updateIncome:hover,
-#incomeRecieved:hover {
-  background: darkgreen;
-}
-
-#credit-btn:hover {
+#debit-btn:hover {
   background: rgb(197, 0, 0);
+}
+#incomeRecieved:hover,
+#updateIncome:hover,
+#credit-btn:hover {
+  background: darkgreen;
 }
 
 #updateIncome,

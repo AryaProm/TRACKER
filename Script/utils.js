@@ -1,23 +1,25 @@
 import { Money } from "../Script/money.js";
 
 export class Utils {
-  constructor() {
+  constructor(M) {
+    this.M = M; // Use the same Money instance from home.js
+
     this.incomeDisplay = document.getElementById("income");
     this.balanceDisplay = document.getElementById("balance");
-    this.incomeInput = document.getElementById("incomeInput");
-    this.transactionsList = document.getElementById("transaction-list");
-
-    this.M = new Money();
-  }
-  updateUI() {
     this.expensesDisplay = document.getElementById("expenses");
+    this.transactionsList = document.getElementById("transaction-list");
+    this.incomeInput = document.getElementById("incomeInput");
 
+    this.updateUI();
+  }
+
+  updateUI() {
     this.incomeDisplay.innerHTML = `$${this.M.getIncome()}`;
     this.balanceDisplay.innerHTML = `$${this.M.getBalance()}`;
 
-    // Calculate and display total expenses
+    // Corrected: Calculate total expenses (debits)
     const totalExpenses = this.M.getTransactions()
-      .filter((t) => t.type === "credit")
+      .filter((t) => t.type === "debit") // Changed from 'credit' to 'debit'
       .reduce((acc, t) => acc + t.amount, 0);
 
     this.expensesDisplay.innerHTML = `$${totalExpenses}`;
@@ -25,17 +27,16 @@ export class Utils {
     this.incomeInput.placeholder = this.M.getIncome();
     this.renderTransactions();
   }
+
   renderTransactions() {
     this.transactionsList.innerHTML = "";
     const transactions = this.M.getTransactions();
-  
+
     transactions.forEach(({ description, amount, type }, index) => {
       const listItem = document.createElement("li");
-      listItem.textContent = `${description}: ${
-        type === "debit" ? "+" : "-"
-      }$${amount}`;
-      listItem.style.color = type === "debit" ? "green" : "red";
-  
+      listItem.textContent = `${description}: ${type === "debit" ? "-" : "+"}$${amount}`;
+      listItem.style.color = type === "debit" ? "red" : "green";
+
       const btn = document.createElement("button");
       btn.textContent = "Remove";
       btn.className = "remove-btn";
@@ -45,15 +46,15 @@ export class Utils {
       btn.style.marginLeft = "10px";
       btn.style.padding = "5px 10px";
       btn.style.cursor = "pointer";
-  
+
       // Remove transaction when clicking the button
       btn.addEventListener("click", () => {
-        M.removeTransaction(index);
-        utils.updateUI();
+        this.M.removeTransaction(index);
+        this.updateUI();
       });
-  
+
       listItem.appendChild(btn);
-      transactionsList.appendChild(listItem);
+      this.transactionsList.appendChild(listItem);
     });
   }
 }
